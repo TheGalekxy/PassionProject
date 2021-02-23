@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PassionProject.Models.PlayerDto>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Players</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="record-container">
+    @foreach (var player in Model)
+    {
+        <div class="record">
+            <div class="_record">
+
+                <nav class="linknav">
+                    <span class="editlink">@Html.ActionLink("Edit", "Edit", new { id = player.PlayerID })</span>
+                </nav>
+
+                <div class="recordtitle">
+                    @Html.ActionLink(player.PlayerName + " " + player.PlayerRank,
+                   "Details",
+                   new { id = player.PlayerID })
+                </div>
+
+
+            </div>
+        </div>
+    }
+</div>
