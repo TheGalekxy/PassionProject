@@ -19,15 +19,9 @@ namespace PassionProject.Controllers
         //This variable is our database access point
         private ValorantTrackerDataContext db = new ValorantTrackerDataContext();
 
-        //This code is mostly scaffolded from the base models and database context
-        //New > WebAPIController with Entity Framework Read/Write Actions
-        //Choose model "Player"
-        //Choose context "Varsity Data Context"
-        //Note: The base scaffolded code needs many improvements for a fully
-        //functioning MVP.
+        // This code is based off of the code written by Christine Bittle in her Varsity Project example.
 
         // GET: api/PlayersData/GetPlayers
-        // TODO: Searching Logic?
         public IEnumerable<PlayerDto> GetPlayers()
         {
             List<Player> Players = db.Players.ToList();
@@ -41,7 +35,7 @@ namespace PassionProject.Controllers
                     PlayerID = Player.PlayerID,
                     PlayerRank = Player.PlayerRank,
                     PlayerName = Player.PlayerName,
-                    TeamID = Player.TeamID
+                    // TeamID = Player.TeamID
                 };
                 PlayerDtos.Add(NewPlayer);
             }
@@ -126,7 +120,7 @@ namespace PassionProject.Controllers
         /// Finds a particular player in the database with a 200 status code. If the player is not found, return 404.
         /// </summary>
         /// <param name="id">The player id</param>
-        /// <returns>Information about the player, including player id, bio, first and last name, and teamid</returns>
+        /// <returns>Information about the player, including player id, player name, and player rank</returns>
         // <example>
         // GET: api/PlayersData/FindPlayer/5
         // </example>
@@ -148,49 +142,13 @@ namespace PassionProject.Controllers
                 PlayerID = Player.PlayerID,
                 PlayerName = Player.PlayerName,
                 PlayerRank = Player.PlayerRank,
-                TeamID = Player.TeamID
+                // TeamID = Player.TeamID
             };
 
 
             //pass along data as 200 status code OK response
             return Ok(PlayerDto);
         }
-
-        /// <summary>
-        /// Finds a particular Team in the database given a player id with a 200 status code. If the Team is not found, return 404.
-        /// </summary>
-        /// <param name="id">The player id</param>
-        /// <returns>Information about the Team, including Team id, bio, first and last name, and teamid</returns>
-        // <example>
-        // GET: api/TeamData/FindTeamForPlayer/5
-        // </example>
-        [HttpGet]
-        [ResponseType(typeof(TeamDto))]
-        public IHttpActionResult FindTeamForPlayer(int id)
-        {
-            //Finds the first team which has any players
-            //that match the input playerid
-            Team Team = db.Teams
-                .Where(t => t.Players.Any(p => p.PlayerID == id))
-                .FirstOrDefault();
-            //if not found, return 404 status code.
-            if (Team == null)
-            {
-                return NotFound();
-            }
-
-            //put into a 'friendly object format'
-            TeamDto TeamDto = new TeamDto
-            {
-                TeamID = Team.TeamID,
-                TeamName = Team.TeamName
-            };
-
-
-            //pass along data as 200 status code OK response
-            return Ok(TeamDto);
-        }
-
 
 
         private bool PlayerExists(int id)

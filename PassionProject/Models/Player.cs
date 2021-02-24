@@ -20,9 +20,9 @@ namespace PassionProject.Models
         /// https://www.entityframeworktutorial.net/code-first/foreignkey-dataannotations-attribute-in-code-first.aspx
 
         //A player plays for one team
-        [ForeignKey("Team")]
-        public int TeamID { get; set; }
-        public virtual Team Team { get; set; }
+        // [ForeignKey("Team")]
+        // public int TeamID { get; set; }
+        // public virtual Team Team { get; set; }
     }
 
     //This class can be used to transfer information about a player.
@@ -37,6 +37,6 @@ namespace PassionProject.Models
         public string PlayerName { get; set; }
         public string PlayerRank { get; set; }
 
-        public int TeamID { get; set; }
+        // public int TeamID { get; set; }
     }
 }

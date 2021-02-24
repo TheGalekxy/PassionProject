@@ -15,7 +15,7 @@ namespace PassionProject.Models
         public string TeamName { get; set; }
 
         //A team can have many players
-        public ICollection<Player> Players { get; set; }
+        // public ICollection<Player> Players { get; set; }
     }
 
     public class TeamDto
