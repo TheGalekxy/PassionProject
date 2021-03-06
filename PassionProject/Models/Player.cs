@@ -37,6 +37,5 @@ namespace PassionProject.Models
         public string PlayerName { get; set; }
         public string PlayerRank { get; set; }
 
-        // public int TeamID { get; set; }
     }
 }

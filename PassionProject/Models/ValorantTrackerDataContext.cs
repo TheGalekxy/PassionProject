@@ -16,5 +16,6 @@ namespace PassionProject.Models
         //Instruction to set the models as tables in our database.
         public DbSet<Player> Players { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamsxPlayers> TeamsxPlayers { get; set; }
     }
 }

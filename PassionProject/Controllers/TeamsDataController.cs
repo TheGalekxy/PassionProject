@@ -76,5 +76,118 @@ namespace PassionProject.Controllers
             return Ok(TeamDto);
         }
 
+
+        // POST: api/TeamsData/AddTeam
+        // FORM DATA: Player JSON Object
+        [ResponseType(typeof(Team))]
+        [HttpPost]
+        public IHttpActionResult AddTeam([FromBody] Team team)
+        {
+            //Will Validate according to data annotations specified on model
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Teams.Add(team);
+            db.SaveChanges();
+
+            return Ok(team.TeamID);
+            // return CreatedAtRoute("DefaultApi", new { id = player.PlayerID }, player);
+        }
+
+        // POST: api/TeamsData/DeleteTeam/1
+        [HttpPost]
+        public IHttpActionResult DeleteTeam(int id)
+        {
+            Team team = db.Teams.Find(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+
+            db.Teams.Remove(team);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        // POST: api/TeamsData/UpdateTeam/1
+        // FORM DATA: Player JSON Object
+        [ResponseType(typeof(void))]
+        [HttpPost]
+        public IHttpActionResult UpdateTeam(int id, [FromBody] Team team)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != team.TeamID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(team).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TeamExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        private bool TeamExists(int id)
+        {
+            return db.Teams.Count(e => e.TeamID == id) > 0;
+        }
+
+        /// <summary>
+        /// Gets the categories associated with a particular product, alongside a status code of 200 (OK)
+        /// </summary>
+        /// <param name="id">The Input Product ID</param>
+        /// <returns>
+        /// A list of categories for the product, stored in data transfer objects.
+        /// </returns>
+        public IHttpActionResult GetPlayersForTeam(int id)
+        {
+
+
+            //Retrieve by accessing the bridging table directly
+            IEnumerable<TeamsxPlayers> TXPs = db.TeamsxPlayers
+                .Where(txpEntry => txpEntry.TeamID == id)
+                .Include(txpEntry => txpEntry.Player) //This step can be necessary if you can't grab the data
+                .ToList();
+
+            List<PlayerDto> playerDtos = new List<PlayerDto> { };
+            foreach (var txpEntry in TXPs)
+            {
+                PlayerDto NewPlayer = new PlayerDto
+                {
+                    PlayerID = txpEntry.Player.PlayerID,
+                    PlayerName = txpEntry.Player.PlayerName,
+                    PlayerRank = txpEntry.Player.PlayerRank
+                };
+                playerDtos.Add(NewPlayer);
+
+            }
+
+            return Ok(playerDtos);
+
+
+
+        }
     }
 }

@@ -53,21 +53,19 @@
 
                 .PrimaryKey(t => t.MapID);
 
-
-
-
             CreateTable(
-                "dbo.TeamPlayers",
+                "dbo.TeamsxPlayers",
                 c => new
                 {
-                    Player_PlayerID = c.Int(nullable: false),
-                    Team_TeamID = c.Int(nullable: false),
+                    TeamsxPlayersID = c.Int(nullable: false, identity: true),
+                    TeamID = c.Int(nullable: false),
+                    PlayerID = c.Int(nullable: false),
                 })
-                .PrimaryKey(t => new { t.Player_PlayerID, t.Team_TeamID })
-                .ForeignKey("dbo.Players", t => t.Player_PlayerID, cascadeDelete: true)
-                .ForeignKey("dbo.Teams", t => t.Team_TeamID, cascadeDelete: true)
-                .Index(t => t.Player_PlayerID)
-                .Index(t => t.Team_TeamID);
+                .PrimaryKey(t => t.TeamsxPlayersID)
+                .ForeignKey("dbo.Teams", t => t.TeamID, cascadeDelete: true)
+                .ForeignKey("dbo.Players", t => t.PlayerID, cascadeDelete: true)
+                .Index(t => t.TeamID)
+                .Index(t => t.PlayerID);
         }
         
         public override void Down()
@@ -79,9 +77,12 @@
             DropIndex("dbo.TeamPlayers", new[] { "Team_TeamID" });
             DropIndex("dbo.TeamPlayers", new[] { "Player_PlayerID" });
             DropIndex("dbo.Players", new[] { "TeamID" });
-            DropTable("dbo.TeamPlayers");
             DropTable("dbo.Teams");
             DropTable("dbo.Players");
+            DropTable("dbo.Games");
+            DropTable("dbo.Maps");
+            DropTable("dbo.TeamsxPlayers");
+
         }
     }
 }
