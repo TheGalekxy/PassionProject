@@ -8,14 +8,14 @@ Users can:
 
 ### Team Database Table
 -View all teams, and details about a specific team (eg. which players are on that team)\
--Create a new team
--Update an existing team's name. (updating players on team functionality is not complete)
+-Create a new team\
+-Update an existing team's name. (updating players on team functionality is not complete)\
 -Delete a team
 
 ### Player Database Table
--View all players, and details about a specific player
--Create a new player
--Update an existing player's information.
+-View all players, and details about a specific player\
+-Create a new player\
+-Update an existing player's information.\
 -Delete a player
 
 ## Challenges Faced
