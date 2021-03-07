@@ -7,7 +7,7 @@ Valorant Custom Game Tracker is designed to help valorant players keep track of 
 Users can:
 
 ### Team Database Table
--View all teams, and details about a specific team (eg. which players are on that team)
+-View all teams, and details about a specific team (eg. which players are on that team)\
 -Create a new team
 -Update an existing team's name. (updating players on team functionality is not complete)
 -Delete a team
