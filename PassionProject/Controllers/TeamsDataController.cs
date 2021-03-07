@@ -155,11 +155,11 @@ namespace PassionProject.Controllers
         }
 
         /// <summary>
-        /// Gets the categories associated with a particular product, alongside a status code of 200 (OK)
+        /// Gets the palyers associated with a particular team, alongside a status code of 200 (OK)
         /// </summary>
-        /// <param name="id">The Input Product ID</param>
+        /// <param name="id">The Input team ID</param>
         /// <returns>
-        /// A list of categories for the product, stored in data transfer objects.
+        /// A list of players for the team, stored in data transfer objects.
         /// </returns>
         public IHttpActionResult GetPlayersForTeam(int id)
         {
