@@ -60,3 +60,19 @@ textarea {
 .record-container {
     height: 100vh;
 }
+
+.no-margin {
+    margin: 0px;
+}
+
+.margin {
+    margin-bottom: 3vh;
+}
+
+.margin-top {
+    margin-top: 3vh;
+}
+
+#no-border {
+    border-top: 0px solid #ddd;
+}

@@ -4,30 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h4>Team @Model.team.TeamName</h4>
+<h4 class="margin-top">Team @Model.team.TeamName</h4>
 <div style="overflow:hidden;">
-    <div style="float:left; margin-right:2%; width:49%;">
-
-        <div>@Html.ActionLink("Delete", "DeleteConfirm", new { id = Model.team.TeamID })</div>
-
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.team.TeamName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.team.TeamName)
-            </dd>
-
-        </dl>
-    </div>
-    <div style="float:left;margin-right:0%; width:49%;">
-        <div>
+    <div class="row">
+        <div class="col-md-12 margin">
             <h4>Players:</h4>
-            <div>
+            <div class="flex no-margin">
                 @foreach (var player in Model.teamplayers)
                 {
-                    <div>
+                    <div class="col-md-1">
                         @Html.ActionLink(
                         player.PlayerName + " " + player.PlayerRank,
                         "Details",
@@ -40,6 +25,7 @@
         </div>
     </div>
     <div style="clear:both;"></div>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.team.TeamID }) |

@@ -4,39 +4,36 @@
     ViewBag.Title = "Details";
 }
 
-<h4>Player</h4>
+<h4 class="margin-top">Details About A Player</h4>
 
 <div>
     <div>@Html.ActionLink("Delete", "DeleteConfirm", new { id = Model.player.PlayerID })</div>
     <hr />
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.player.PlayerName)
-        </dt>
+    <div class="row">
+        <div class="col-md-12 margin">
+            <div class="flex no-margin">
+                @Html.DisplayNameFor(model => model.player.PlayerName)
+                <div class="col-md-1">
+                    @Html.DisplayFor(model => model.player.PlayerName)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.player.PlayerName)
-        </dd>
+            <div class="flex no-margin">
+                @Html.DisplayNameFor(model => model.player.PlayerRank)
+                <div class="col-md-1">
+                    @Html.DisplayFor(model => model.player.PlayerRank)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.player.PlayerRank)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.player.PlayerRank)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.player.PlayerID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.player.PlayerID)
-        </dd>
-
-
-    </dl>
+            <div class="flex no-margin">
+                @Html.DisplayNameFor(model => model.player.PlayerID)
+                <div class="col-md-1">
+                    @Html.DisplayFor(model => model.player.PlayerID)
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.player.PlayerID }) |
