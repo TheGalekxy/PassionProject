@@ -30,7 +30,7 @@ Users can:
 - Views to display a list of games, the associated teams, the score of the game, and the map
 - Login Feature
 - Filter for games
-- More
+- More....
 
 
 ## References
