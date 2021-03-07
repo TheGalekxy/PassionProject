@@ -1,14 +1,32 @@
-﻿<div class="jumbotron">
-    <h1>Valorant Custom Game Tracking App</h1>
-    <img src="~/Content/Images/"/>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Players</h2>
-        <p>@Html.ActionLink("Player", "List", "Player", new { area = "" }, null)</p>
+﻿<div class="header">
+    <div class="container">
+        <h1>Valorant Custom Game Tracking App</h1>
+        <img src="~/Content/Images/valorant-banner-art.jpg" />
     </div>
-    <div class="col-md-4">
-        <h2>Teams</h2>
-        <p>@Html.ActionLink("Team", "List", "Team", new { area = "" }, null)</p>
+</div>
+<div class="row flex">
+
+    <div class="col-md-5 card">
+        <div class="flex">
+            <div>
+                <img src="~/Content/Images/usericon.png" alt="User Icon" style="width:50%">
+                <div class="cardContainer">
+                    <h2>Players</h2>
+                    <p>@Html.ActionLink("Check out our Players!", "List", "Player", new { area = "" }, null)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 card">
+        <div class="flex">
+            <div>
+                <img src="~/Content/Images/group.png" alt="Team Icon" style="width:50%">
+                <div class="cardContainer">
+                    <h2>Teams</h2>
+                    <p>@Html.ActionLink("A Complete list of Registered Teams.", "List", "Team", new { area = "" }, null)</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

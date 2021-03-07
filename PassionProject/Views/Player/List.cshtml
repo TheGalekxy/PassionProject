@@ -12,21 +12,22 @@
 <div class="record-container">
     @foreach (var player in Model)
     {
-        <div class="record">
-            <div class="_record">
+        <div class="record col-md-5 card">
+            <div class="_record flex">
 
+                <div>
+                    <div class="recordtitle cardContainer">
+                        <img src="~/Content/Images/usericon.png" alt="User Icon" style="width:30%">
+                        @Html.ActionLink(player.PlayerName + " " + player.PlayerRank,
+                       "Details",
+                       new { id = player.PlayerID })
+                    </div>
+                </div>
                 <nav class="linknav">
                     <span class="editlink">@Html.ActionLink("Edit", "Edit", new { id = player.PlayerID })</span>
                 </nav>
-
-                <div class="recordtitle">
-                    @Html.ActionLink(player.PlayerName + " " + player.PlayerRank,
-                   "Details",
-                   new { id = player.PlayerID })
-                </div>
-
-
             </div>
         </div>
     }
+
 </div>

@@ -197,6 +197,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\group.png" />
+    <Content Include="Content\Images\usericon.png" />
+    <Content Include="Content\Images\valorant-banner-art.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -256,7 +259,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
